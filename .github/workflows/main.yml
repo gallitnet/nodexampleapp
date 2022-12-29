@@ -42,10 +42,10 @@ jobs:
       - name: Build docker image 
         if: steps.check_files.outputs.files_exists == 'true'
         working-directory: ./
-        run: docker build . -t gcr.io/${{ secrets.PROJECT_ID }}/${{ github.event.repository.name }}:${BRANCH_NAME}-${{ env.imagetag }}
+        run: docker build . -t gcr.io/${{ secrets.PROJECT_ID }}/nodenext:${BRANCH_NAME}-${{ env.imagetag }}
       - name: Push image to remote repo 
         if: steps.check_files.outputs.files_exists == 'true'
         working-directory: ./
-        run: docker push gcr.io/${{ secrets.PROJECT_ID }}/${{ github.event.repository.name }}:${BRANCH_NAME}-${{ env.imagetag }}
+        run: docker push gcr.io/${{ secrets.PROJECT_ID }}/nodenext:${BRANCH_NAME}-${{ env.imagetag }}
   
         
